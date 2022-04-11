@@ -44,8 +44,8 @@
                     <tr *ngFor="let acao of acoesLista; index as i">
                         <th scope="row">{{ acao?.nome }}</th>
                         <td>{{ acao?.valor | currency:'BRL' }}</td>
-                        <td>
-                            <!-- <app-input></app-input> -->
+                        <td [width]="500">
+                            <app-input [acoes]="acao" (resposta)="retornaValor($event)"></app-input>
                         </td>
                     </tr>
                 </tbody>

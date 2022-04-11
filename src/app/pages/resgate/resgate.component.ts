@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Acoes, Investimento } from 'src/app/shared/interfaces/investimentos.interface';
 import { InvestimentoService } from 'src/app/shared/services/investimentos.service';
-// import { InputComponent } from 'src/app/shared/components/input/input.component';
+import { InputComponent } from 'src/app/shared/components/input/input/input.component';
 
 @Component({
   selector: 'app-rescue',
@@ -15,7 +15,7 @@ export class ResgateComponent implements OnInit {
   public investimento: Investimento | undefined;
   public saldoTotal: any;
   public valorTotal: number = 0;
-  public acoesLista: Acoes[] | undefined;
+  public acoesLista: Acoes[] | undefined;  
 
   constructor(
     private route: ActivatedRoute,
@@ -46,8 +46,21 @@ export class ResgateComponent implements OnInit {
       })
   }
 
-  calc(porcentagem: number) {
+  calc(porcentagem: any) {
     return (this.saldoTotal / 100) * porcentagem;
+  }
+
+  retornaValor( resposta : Acoes ) {        
+    this.acoesLista = this.acoesLista?.map(a => {
+      if(resposta.id === a.id) {        
+        a.resgate = resposta.resgate;        
+      }
+      return a;
+    });        
+    this.valorTotal = this.acoesLista?.filter(a => a.resgate).map(a => a.resgate).reduce((acc: any, val: any) => {
+      return acc + val;
+    }, 0);
+
   }
 
 

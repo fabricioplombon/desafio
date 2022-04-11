@@ -5,14 +5,15 @@ export interface Lista {
 export interface Investimento {
     nome: string;
     objetivo: string;
-    saldoTotal: number;  
+    saldoTotal: number;
     indicadorCarencia: string;
     acoes?: Acoes[];
 }
 
 export interface Acoes {
-    id: string;
-    nome: string;
-    percentual: number;
+    id?: string | undefined;
+    nome?: string | undefined;
+    percentual?: number | undefined;
     valor?: number;
+    resgate?: number;
 }
