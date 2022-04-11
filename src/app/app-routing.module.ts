@@ -4,17 +4,17 @@ import { HomeComponent } from './pages/home/home.component';
 import { ResgateComponent } from './pages/resgate/resgate.component';
 
 const routes: Routes = [
-  { 
+  {
     path: '',
     component: HomeComponent
   },
-  { 
+  {
     path: 'resgate/:nome',
     component: ResgateComponent
   },
-  { 
+  {
     path: 'resgate',
-    redirectTo: ''    
+    redirectTo: ''
   },
 ];
 

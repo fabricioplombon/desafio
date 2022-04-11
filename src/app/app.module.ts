@@ -17,17 +17,17 @@ import { CoreService } from './shared/services/core.service';
   declarations: [
     AppComponent,
     HomeComponent,
-    ResgateComponent    
+    ResgateComponent,    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule,    
+    NgbModule,
     HttpClientModule
   ],
-  providers: [      
+  providers: [
     CoreService,
-    {      
+    {
       provide: LOCALE_ID,
       useValue: 'pt-BR'
     }
