@@ -1,0 +1,33 @@
+<div class="container">
+  <header>
+      <h1>Investimentos</h1>
+  </header>
+  <div class="box">
+    <table class="table table-striped" *ngIf="investimentos; else loading">
+        <thead>
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Objetivo</th>
+            <th scope="col">Saldo total</th>              
+          </tr>
+        </thead>
+        <tbody class="table__body">
+          <tr *ngFor="let investimento of investimentos; index as i">
+            <ng-template [ngIf]="investimento.indicadorCarencia === 'N'">
+              <th scope="row" [routerLink]="['/resgate', investimento.nome]">{{ investimento.nome }}</th>              
+              <td [routerLink]="['/resgate', investimento.nome]">{{ investimento.objetivo  }}</td>
+              <td [routerLink]="['/resgate', investimento.nome]">{{ investimento.saldoTotal | currency:'BRL' }}</td>
+            </ng-template>
+            <ng-template [ngIf]="investimento.indicadorCarencia === 'S'" >
+              <th scope="row" class="is-inactive">{{ investimento.nome }}</th>              
+              <td class="is-inactive">{{ investimento.objetivo  }}</td>
+              <td class="is-inactive">{{ investimento.saldoTotal | currency:'BRL' }}</td>
+            </ng-template>
+          </tr>
+        </tbody>
+      </table>
+      <ng-template #loading>
+        <p>Carregando...</p>
+      </ng-template>
+    </div>
+</div>

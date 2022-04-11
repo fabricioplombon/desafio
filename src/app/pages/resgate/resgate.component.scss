@@ -1,0 +1,31 @@
+
+.bi {
+    font-size: 3rem;
+}
+
+h2 {
+    margin: 2rem 0;
+}
+
+.form-text {
+    padding-left: .5rem;
+
+    &.is-error {
+        color: red;
+    }
+}
+
+.value {
+    &__total {
+        margin-left: .5rem;
+    }
+}
+
+.actions {
+    justify-content: flex-end;
+
+    button {
+        margin-left: 1rem;
+    }
+}
+

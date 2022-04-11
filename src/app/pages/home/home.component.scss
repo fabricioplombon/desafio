@@ -1,0 +1,12 @@
+.table {
+    &__body {
+        tr {
+            cursor: pointer;
+
+            .is-inactive {
+                cursor: default;
+                opacity: .5;
+            }
+        }
+    }
+}

@@ -1,1 +1,48 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+:host {
+    color: #777777;
+    font-size: 1.2rem;
+}
+
+body {
+    background:  var(--bs-gray-200);
+}
+
+header {
+    margin: 3rem 0;
+}
+
+h1 {
+    text-transform: uppercase;
+}
+h2 {
+    text-transform: uppercase;
+}
+
+.box {
+    border: 1px solid var(--bs-gray-400);
+    background: var(--bs-gray-100);
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 1px 2px var(--bs-gray-400);
+    color: var(--bs-gray-600);
+    margin-bottom: 2rem;
+
+    &__col {        
+        justify-content: center;
+        border-right: 1px solid var(--bs-gray-200);
+        
+        &:last-child {
+            border: none;
+        }
+    }
+
+    &__name {        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 1rem;
+    }
+}
