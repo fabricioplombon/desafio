@@ -21,3 +21,13 @@ h2 {
     }
 }
 
+.modal {
+    &-body {
+        ul {
+            list-style: none;
+        }
+    }
+    &-footer {
+        justify-content: center;
+    }
+}

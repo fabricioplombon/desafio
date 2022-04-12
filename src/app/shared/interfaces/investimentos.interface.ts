@@ -16,4 +16,5 @@ export interface Acoes {
     percentual?: number | undefined;
     valor?: number;
     resgate?: number;
+    error?: boolean | undefined;
 }

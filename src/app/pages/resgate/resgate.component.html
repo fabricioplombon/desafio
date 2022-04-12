@@ -62,6 +62,42 @@
     </div>
     <div class="actions d-flex">
         <button class="btn btn-secondary" routerLink="/">Cancelar</button>
-        <button class="btn btn-primary">Confirmar resgate</button>
+        <button class="btn btn-primary" (click)="abrirModal(content)">Confirmar resgate</button>
     </div>
 </div>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+    </div>
+    <!-- // modal error -->
+    <ng-container *ngIf="error">
+        <div class="text-center">
+            <h2>Dados inválidos!</h2>
+            <p *ngIf="errorType === 'excedido'">Você preencheu um ou mais campos com um valor acima do permitido.</p>
+            <p *ngIf="errorType === 'vazio'">Você precisa inserir um valor para confirmar o resgate.</p>
+        </div>
+        <div class="modal-body" *ngIf="errorList">
+            <ul class="text-center">
+                <li *ngFor="let err of errorList"><strong>{{ err.nome }}</strong>: O valor a resgatar não pode ser maior que {{ err.valor | currency:'BRL' }}</li>                
+            </ul>
+        </div>
+        <div class="modal-footer">
+            <div class="text-center">
+                <button class="btn btn-primary" (click)="modal.close('Close click')">Corrigir</button>
+            </div>
+        </div>
+    </ng-container>
+    <!-- modal success -->
+    <ng-container *ngIf="!error">
+        <div class="text-center">
+            <h2>Resgate efetuado com sucesso.</h2>            
+        </div>       
+        <div class="modal-footer">
+            <div class="text-center">
+                <button class="btn btn-primary" (click)="modal.close('Close click')" [routerLink]="['']">Novo resgate</button>
+            </div>
+        </div>
+    </ng-container>
+
+</ng-template>
