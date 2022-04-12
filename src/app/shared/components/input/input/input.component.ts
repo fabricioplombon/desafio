@@ -23,14 +23,22 @@ export class InputComponent {
 
   constructor() { }
 
-  valida() {
-    if (this.acoes?.valor && parseFloat(this.valor) > this.acoes.valor) {
+  valida() {    
+    if (this.acoes?.valor && this.convert(this.valor) > this.convert(this.acoes?.valor, false)) {
       this.error = true;
     } else {
       this.error = false;
     }
-    this.acoes = { ...this.acoes, resgate: parseFloat(this.valor) };
+    this.acoes = { ...this.acoes, resgate: this.convert(this.valor) };
     this.resposta.emit(this.acoes);
+  }
+
+  convert(valor: any, force: boolean = true) {
+    if (force) {
+      return parseFloat(valor.replace(',', '.'));
+    } else {
+      return +(parseFloat(valor).toFixed(2));;
+    }
   }
 
 }
